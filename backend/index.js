@@ -13,10 +13,15 @@ import { app, server } from "./socket.js"
 dotenv.config()
 
 const port=process.env.PORT || 5000
+
 app.use(cors({
-    origin:"https://frontend-w8hf.onrender.com",
-    credentials:true
-}))
+    origin: [
+        "https://frontend-w8hf.onrender.com",   // Your deployed frontend
+        "http://localhost:5173"                 // Local development
+    ],
+    credentials: true
+}));
+
 app.use(express.json())
 app.use(cookieParser())
 
